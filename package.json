@@ -1,6 +1,6 @@
 {
   "name": "react-native-check-permisstion-notification",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Check permisstion, open settings notification in Android",
   "main": "index.js",
   "scripts": {
