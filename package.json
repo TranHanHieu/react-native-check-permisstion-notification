@@ -1,0 +1,27 @@
+{
+  "name": "react-native-check-permisstion-notification",
+  "version": "1.0.0",
+  "description": "Check permisstion, open settings notification in Android",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TranHanHieu/react-native-check-permisstion-notification.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-native",
+    "check",
+    "permisstion",
+    "notification",
+    "permisstion"
+  ],
+  "author": "tranhanhieu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TranHanHieu/react-native-check-permisstion-notification/issues"
+  },
+  "homepage": "https://github.com/TranHanHieu/react-native-check-permisstion-notification#readme"
+}
