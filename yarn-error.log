@@ -16,7 +16,7 @@ Platform:
 npm manifest: 
   {
     "name": "react-native-check-permisstion-notification",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "Check permisstion, open settings notification in Android",
     "main": "index.js",
     "scripts": {
@@ -49,7 +49,7 @@ Lockfile:
   No lockfile
 
 Trace: 
-  Error: https://registry.yarnpkg.com/react-native-check-permisstion-notification: you must verify your email before publishing a new package: https://www.npmjs.com/email-edit
+  Error: https://registry.yarnpkg.com/react-native-check-permisstion-notification: You cannot publish over the previously published versions: 1.0.3.
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:65019:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:132430:22)
       at emitTwo (events.js:126:13)
