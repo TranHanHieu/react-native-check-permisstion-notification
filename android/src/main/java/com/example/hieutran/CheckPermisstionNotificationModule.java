@@ -3,8 +3,8 @@ package com.example.hieutran.checkPermisstionNotification;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.Settings;
-import android.app.AppOpsManager;
 import android.content.pm.ApplicationInfo;
+import android.app.AppOpsManager;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -14,6 +14,8 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import android.util.Log;
+import com.facebook.react.bridge.Promise;
 
 public class CheckPermisstionNotificationModule extends ReactContextBaseJavaModule {
 
@@ -45,13 +47,13 @@ public class CheckPermisstionNotificationModule extends ReactContextBaseJavaModu
         reactContext.startActivity(i);
     }
     @ReactMethod
-    public boolean checkPermisstion() {
+    public void checkPermisstion(final Promise promise) {
 
-        AppOpsManager mAppOps = (AppOpsManager) reactContext.getSystemService(Context.APP_OPS_SERVICE);
+        AppOpsManager mAppOps = (AppOpsManager) reactContext.getSystemService(ReactContext.APP_OPS_SERVICE);
 
         ApplicationInfo appInfo = reactContext.getApplicationInfo();
 
-        String pkg = reactContext.getApplicationContext().getPackageName();
+        String pkg = reactContext.getPackageName();
 
         int uid = appInfo.uid;
 
@@ -65,22 +67,21 @@ public class CheckPermisstionNotificationModule extends ReactContextBaseJavaModu
 
             Field opPostNotificationValue = appOpsClass.getDeclaredField(OP_POST_NOTIFICATION);
             int value = (int)opPostNotificationValue.get(Integer.class);
-
-            return ((int)checkOpNoThrowMethod.invoke(mAppOps,value, uid, pkg) == AppOpsManager.MODE_ALLOWED);
+          
+            promise.resolve(((int)checkOpNoThrowMethod.invoke(mAppOps,value, uid, pkg) == AppOpsManager.MODE_ALLOWED));
+                
 
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            promise.reject(e);
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            promise.reject(e);
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+            promise.reject(e);
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            promise.reject(e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            promise.reject(e);
         }
-        return false;
 
     }
-    //endregion
 }
